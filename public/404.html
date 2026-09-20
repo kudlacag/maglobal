@@ -2,13 +2,23 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Redirecting...</title>
-  <meta http-equiv="refresh" content="0; URL='https://www.masmartglobal.ch'">
+  <title>MA SMART GLOBAL</title>
   <script>
-    window.location.href = "https://www.masmartglobal.ch";
+    // SPA fallback for GitHub Pages
+    // Stores the path, redirects to index.html, then restores the path
+    (function () {
+      var segmentCount = 0;
+      var location = window.location;
+      var repo = "/"; // root domain, so "/"
+      var l = location.pathname.split("/").slice(1 + segmentCount);
+      location.replace(
+        location.protocol + "//" + location.host + repo +
+        "?/" + l.join("/") +
+        (location.search ? "&" + location.search.slice(1) : "") +
+        location.hash
+      );
+    })();
   </script>
 </head>
-<body>
-  <p>Redirecting to <a href="https://www.masmartglobal.ch">www.masmartglobal.ch</a></p>
-</body>
+<body></body>
 </html>
