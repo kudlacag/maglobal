@@ -1,259 +1,243 @@
-import React, { useState } from 'react';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import { Routes, Route, Link, NavLink, useLocation } from "react-router-dom";
+import "./App.css";
 
-function App() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+import Home            from "./pages/Home";
+import Umzug           from "./pages/Umzug";
+import Booking         from "./pages/Booking";
+import Success         from "./pages/Success";
+import Reinigung       from "./pages/Reinigung";
+import Montage         from "./pages/Montage";
+import Logistik        from "./pages/Logistik";
+import Offerte         from "./pages/Offerte";
+import Impressum       from "./pages/Impressum";
+import Datenschutz     from "./pages/Datenschutz";
+import NotFound        from "./pages/NotFound";
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+/* ------------------------------------------------------------------ *
+ * Config
+ * ------------------------------------------------------------------ */
+const WHATSAPP_NUMBER = "41779074062";
+const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}`;
 
-  const whatsappNumber = '41779074062';
-  const whatsappLink = `https://wa.me/${whatsappNumber}`;
+const NAV_ITEMS = [
+  { to: "/umzug",     label: "Umzug" },
+  { to: "/reinigung", label: "Reinigung" },
+  { to: "/montage",   label: "Montage" },
+  { to: "/logistik",  label: "Logistik" },
+];
 
+const LANGS = ["DE", "EN", "SO"];
+
+/* ------------------------------------------------------------------ *
+ * Placeholder pages — will be replaced in Step 4
+ * ------------------------------------------------------------------ */
+function Placeholder({ title }) {
   return (
-    <div className="App">
-      <nav className="navbar">
-        <div className="container nav-container">
-          <div className="nav-brand">
-            <div className="brand-icon-small">MA</div>
-            <span className="brand-name">SMART GLOBAL <span className="gmbh-small">GmbH</span></span>
-          </div>
-          
-          <button className={`hamburger ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu}>
-            <span className="bar"></span>
-            <span className="bar"></span>
-            <span className="bar"></span>
-          </button>
-
-          <ul className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
-            <li><a href="#services" onClick={toggleMenu}>Dienstleistungen</a></li>
-            <li><a href="#cleaning" onClick={toggleMenu}>Reinigung</a></li>
-            <li><a href="#moving" onClick={toggleMenu}>Umzug</a></li>
-            <li><a href="#contact" onClick={toggleMenu}>Kontakt</a></li>
-            <li><a href="#quote" className="nav-cta" onClick={toggleMenu}>Angebot</a></li>
-          </ul>
-        </div>
-      </nav>
-
-      <header className="hero" id="home">
-        <div className="container hero-content">
-          <div className="hero-brand">
-            <div className="hero-icon">MA</div>
-            <h1>SMART GLOBAL <span className="gmbh-hero">GmbH</span></h1>
-          </div>
-          <div className="hero-tagline">
-            <p className="motto">HEUTE BEWEGEN, MORGEN BAUEN</p>
-            <p className="sub-motto">EIN STARKER PARTNER FÜR IHRE ZUKUNFT</p>
-          </div>
-          <div className="hero-services">
-            <span className="service-tag">UMZUG</span>
-            <span className="service-tag">REINIGUNG</span>
-            <span className="service-tag">TRANSPORT</span>
-            <span className="service-tag">TAXI</span>
-          </div>
-        </div>
-      </header>
-
-      <div className="quick-contact">
-        <div className="container contact-grid">
-          <a href="tel:+41779074062" className="contact-item">
-            <i className="fas fa-phone-alt"></i>
-            <span>+41 77 907 40 62</span>
-          </a>
-          <a href="mailto:mohamedgeele@hotmail.com" className="contact-item">
-            <i className="fas fa-envelope"></i>
-            <span>E-Mail</span>
-          </a>
-          <a href="#" className="contact-item">
-            <i className="fas fa-map-pin"></i>
-            <span>Zürich</span>
-          </a>
-        </div>
+    <section className="section">
+      <div className="container">
+        <span className="eyebrow">In Vorbereitung</span>
+        <h1 className="section-title">{title}</h1>
+        <p className="section-lead">
+          Diese Seite wird im nächsten Schritt aufgebaut.
+        </p>
       </div>
-
-      <main>
-        <section className="services-section" id="services">
-          <div className="container">
-            <h2 className="section-title-mobile">Unsere Dienstleistungen</h2>
-            <div className="services-grid">
-              <div className="service-card">
-                <i className="fas fa-truck-moving"></i>
-                <h3>UMZUG</h3>
-                <p>Umzug · Relocation</p>
-                <span className="badge">UMZUG</span>
-              </div>
-              <div className="service-card">
-                <i className="fas fa-broom"></i>
-                <h3>REINIGUNG</h3>
-                <p>Reinigung · Endreinigung</p>
-                <span className="badge">REINIGUNG</span>
-              </div>
-              <div className="service-card">
-                <i className="fas fa-boxes"></i>
-                <h3>TRANSPORT</h3>
-                <p>Transport · Logistik</p>
-                <span className="badge">TRANSPORT</span>
-              </div>
-              <div className="service-card">
-                <i className="fas fa-taxi"></i>
-                <h3>TAXI</h3>
-                <p>Taxi · Fahrdienst</p>
-                <span className="badge">TAXI</span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="cleaning-section" id="cleaning">
-          <div className="container">
-            <h2 className="section-title-mobile">
-              <i className="fas fa-star" style={{ color: '#d4a84b' }}></i> 
-              REINIGUNG · UMZUG · TRANSPORT
-            </h2>
-            <div className="cleaning-grid">
-              <div className="cleaning-list">
-                <ul>
-                  <li><i className="fas fa-check-circle"></i> Endreinigung</li>
-                  <li><i className="fas fa-check-circle"></i> Wohnungs- & Büroreinigung</li>
-                  <li><i className="fas fa-check-circle"></i> Fensterreinigung</li>
-                  <li><i className="fas fa-check-circle"></i> Entsorgung & Recycling</li>
-                  <li><i className="fas fa-check-circle"></i> Transport & Möbelmontage</li>
-                </ul>
-              </div>
-              <div className="cleaning-badges">
-                <div className="ba-item">
-                  <span className="ba-label">VORHER</span> 
-                  <i className="fas fa-arrow-right"></i> 
-                  <span className="ba-label after">NACHHER</span>
-                </div>
-                <p className="fast-tag">
-                  <i className="fas fa-check-circle"></i> SCHNELL · ZUVERLÄSSIG · PREISWERT
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="quote-section" id="quote">
-          <div className="container quote-block">
-            <div>
-              <h2 className="quote-title">
-                <i className="fas fa-quote-left"></i> KOSTENLOSES ANGEBOT ANFRAGEN!
-              </h2>
-              <div className="quote-contact-mobile">
-                <span><i className="fas fa-phone"></i> +41 77 907 40 62</span>
-                <span><i className="fas fa-envelope"></i> mohamedgee@hotmail.com</span>
-              </div>
-            </div>
-            <a href="#" className="cta-btn-mobile">
-              <i className="fas fa-paper-plane"></i> Angebot
-            </a>
-          </div>
-        </section>
-
-        <section className="contact-section" id="contact">
-          <div className="container contact-methods">
-            <a href="tel:+41779074062" className="contact-method">
-              <i className="fas fa-phone-alt"></i>
-              <strong>Anrufen</strong>
-              <span>+41 77 907 40 62</span>
-            </a>
-            <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="contact-method">
-              <i className="fab fa-whatsapp"></i>
-              <strong>WhatsApp</strong>
-              <span>Chatten Sie mit uns</span>
-            </a>
-            <a href="mailto:mohamedgeele@hotmail.com" className="contact-method">
-              <i className="fas fa-envelope"></i>
-              <strong>E-Mail</strong>
-              <span>mohamedgee@hotmail.com</span>
-            </a>
-            <a href="#" className="contact-method">
-              <i className="fas fa-directions"></i>
-              <strong>Wegbeschreibung</strong>
-              <span>Badenerstrasse 370</span>
-            </a>
-          </div>
-        </section>
-
-        <div className="partner-section">
-          <div className="container partner-content">
-            <p className="partner-text">
-              <i className="fas fa-handshake"></i> IHR PARTNER FÜR JEDES PROJEKT.
-            </p>
-            <p className="partner-address-mobile">
-              <i className="fas fa-map-pin"></i> Badenerstrasse 370, 8004 Zürich
-            </p>
-          </div>
-        </div>
-      </main>
-
-      <footer className="footer-mobile">
-        <div className="container">
-          <div className="footer-content">
-            <div className="footer-brand">
-              <h3>MA SMART GLOBAL GmbH</h3>
-              <p>Badenerstrasse 370, 8004 Zürich</p>
-              <p>www.masmartglobal.ch</p>
-            </div>
-            <div className="footer-social">
-              <span className="switzerland-badge">🇨🇭 SCHWEIZ</span>
-              <div className="social-icons">
-                <a href="#"><i className="fab fa-facebook"></i></a>
-                <a href="#"><i className="fab fa-instagram"></i></a>
-                <a href="#"><i className="fab fa-linkedin"></i></a>
-              </div>
-            </div>
-          </div>
-          
-          {/* Designer Credit - Xasanjii IT-Solutions with Facebook Link */}
-          <div className="designer-credit">
-            <div className="designer-content">
-              <span className="designer-icon">
-                <i className="fas fa-code"></i>
-              </span>
-              <span className="designer-text">
-                Designed & Developed by
-              </span>
-              <a 
-                href="https://facebook.com/xasanbiyo" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="designer-link"
-              >
-                <i className="fab fa-facebook"></i>
-                Xasanjii IT-Solutions
-                <i className="fas fa-external-link-alt"></i>
-              </a>
-            </div>
-            <div className="designer-divider"></div>
-            <p className="designer-tagline">
-              <i className="fas fa-heart" style={{ color: '#ff6b6b' }}></i>
-              Professionelle Web-Lösungen
-              <i className="fas fa-heart" style={{ color: '#ff6b6b' }}></i>
-            </p>
-          </div>
-
-          <div className="footer-bottom">
-            <span>MA SMART GLOBAL GmbH</span>
-            <span>REINIGUNG · UMZUG · TRANSPORT · ENTSORGUNG</span>
-          </div>
-        </div>
-      </footer>
-
-      {/* Floating WhatsApp Button */}
-      <a 
-        href={whatsappLink} 
-        target="_blank" 
-        rel="noopener noreferrer" 
-        className="whatsapp-float"
-        aria-label="Chat on WhatsApp"
-      >
-        <i className="fab fa-whatsapp"></i>
-      </a>
-    </div>
+    </section>
   );
 }
 
-export default App;
+/* ------------------------------------------------------------------ *
+ * Scroll-to-top on route change
+ * ------------------------------------------------------------------ */
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, [pathname]);
+  return null;
+}
+
+/* ------------------------------------------------------------------ *
+ * Navbar
+ * ------------------------------------------------------------------ */
+function Navbar() {
+  const [open, setOpen] = useState(false);
+  const { pathname } = useLocation();
+
+  // Close menu whenever the route changes
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
+  return (
+    <nav className="navbar">
+      <div className="container nav-container">
+        <Link to="/" className="nav-brand" aria-label="MA SMART GLOBAL – Startseite">
+          <span className="brand-icon-small">MA</span>
+          <span className="brand-name">
+            SMART GLOBAL <span className="gmbh-small">GmbH</span>
+          </span>
+        </Link>
+
+        <button
+          type="button"
+          className={`hamburger ${open ? "active" : ""}`}
+          onClick={() => setOpen((v) => !v)}
+          aria-label={open ? "Menü schliessen" : "Menü öffnen"}
+          aria-expanded={open}
+        >
+          <span className="bar" />
+          <span className="bar" />
+          <span className="bar" />
+        </button>
+
+        <ul className={`nav-menu ${open ? "active" : ""}`}>
+          {NAV_ITEMS.map((item) => (
+            <li key={item.to}>
+              <NavLink
+                to={item.to}
+                className={({ isActive }) => (isActive ? "active" : undefined)}
+              >
+                {item.label}
+              </NavLink>
+            </li>
+          ))}
+          <li>
+            <NavLink to="/offerte" className="nav-cta">
+              Offerte
+            </NavLink>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  );
+}
+
+/* ------------------------------------------------------------------ *
+ * Footer (with DE · EN · SO switcher — visual only in Step 3)
+ * ------------------------------------------------------------------ */
+function Footer() {
+  const [lang, setLang] = useState("DE");
+
+  return (
+    <footer className="footer-mobile">
+      <div className="container">
+        <div className="footer-content">
+          <div className="footer-brand">
+            <h3>MA SMART GLOBAL GmbH</h3>
+            <p>Badenerstrasse 370, 8004 Zürich</p>
+            <p>www.masmartglobal.ch</p>
+          </div>
+
+          <div className="footer-social">
+            <span className="switzerland-badge">🇨🇭 SCHWEIZ</span>
+            <div className="social-icons">
+              <a href="#" aria-label="Facebook"><i className="fab fa-facebook" /></a>
+              <a href="#" aria-label="Instagram"><i className="fab fa-instagram" /></a>
+              <a href="#" aria-label="LinkedIn"><i className="fab fa-linkedin" /></a>
+            </div>
+          </div>
+        </div>
+
+        {/* Language switcher — wiring to i18n comes in a later step */}
+        <div className="lang-switcher" role="group" aria-label="Sprache">
+          {LANGS.map((l) => (
+            <button
+              key={l}
+              type="button"
+              className={lang === l ? "lang active" : "lang"}
+              onClick={() => setLang(l)}
+            >
+              {l}
+            </button>
+          ))}
+        </div>
+
+        <div className="footer-links">
+          <Link to="/impressum">Impressum</Link>
+          <span aria-hidden="true">·</span>
+          <Link to="/datenschutz">Datenschutz</Link>
+        </div>
+
+        {/* Designer credit (kept from your original) */}
+        <div className="designer-credit">
+          <div className="designer-content">
+            <span className="designer-icon">
+              <i className="fas fa-code" />
+            </span>
+            <span className="designer-text">Designed &amp; Developed by</span>
+            <a
+              href="https://facebook.com/xasanbiyo"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="designer-link"
+            >
+              <i className="fab fa-facebook" />
+              Xasanjii IT-Solutions
+              <i className="fas fa-external-link-alt" />
+            </a>
+          </div>
+          <div className="designer-divider" />
+          <p className="designer-tagline">
+            <i className="fas fa-heart" style={{ color: "#ff6b6b" }} />
+            Professionelle Web-Lösungen
+            <i className="fas fa-heart" style={{ color: "#ff6b6b" }} />
+          </p>
+        </div>
+
+        <div className="footer-bottom">
+          <span>© {new Date().getFullYear()} MA SMART GLOBAL GmbH</span>
+          <span>UMZUG · REINIGUNG · MONTAGE · LOGISTIK</span>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+/* ------------------------------------------------------------------ *
+ * WhatsApp floating button
+ * ------------------------------------------------------------------ */
+function WhatsAppFloat() {
+  return (
+    <a
+      href={WHATSAPP_LINK}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="whatsapp-float"
+      aria-label="Auf WhatsApp chatten"
+    >
+      <i className="fab fa-whatsapp" />
+    </a>
+  );
+}
+
+/* ------------------------------------------------------------------ *
+ * App
+ * ------------------------------------------------------------------ */
+export default function App() {
+  return (
+    <div className="App">
+      <ScrollToTop />
+      <Navbar />
+
+      <main>
+       <Routes>
+        <Route path="/"                element={<Home />} />
+        <Route path="/umzug"           element={<Umzug />} />
+        <Route path="/umzug/:offerId"  element={<Booking />} />
+        <Route path="/reinigung"       element={<Reinigung />} />
+        <Route path="/montage"         element={<Montage />} />
+        <Route path="/logistik"        element={<Logistik />} />
+        <Route path="/offerte"         element={<Offerte />} />
+        <Route path="/impressum"       element={<Impressum />} />
+        <Route path="/datenschutz"     element={<Datenschutz />} />
+        <Route path="/booking-success" element={<Success />} />
+        <Route path="*"                element={<NotFound />} />
+      </Routes>
+      </main>
+
+      <Footer />
+      <WhatsAppFloat />
+    </div>
+  );
+}
