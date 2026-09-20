@@ -1,0 +1,19 @@
+{
+  "short_name": "MA SMART",
+  "name": "MA SMART GLOBAL GmbH",
+  "description": "Umzug · Reinigung · Montage · Logistik in Zürich",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#0b1a2e",
+  "background_color": "#0b1a2e",
+  "lang": "de"
+}
