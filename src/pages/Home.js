@@ -4,37 +4,45 @@ import services from "../data/services";
 import values from "../data/values";
 import steps from "../data/steps";
 import faq from "../data/faq";
+import CtaBlock from "../components/CtaBlock";
+import ReviewsSection from "../components/ReviewsSection";
+import GallerySection from "../components/GallerySection";
 
 export default function Home() {
   return (
     <>
       {/* HERO */}
-      <header className="hero" id="home">
-        <div className="container hero-content">
-          <span className="eyebrow">Zuverlässige Services in Zürich und Umgebung</span>
-          <h1 className="hero-title">Mehr Leichtigkeit für Ihren Alltag.</h1>
-          <p className="hero-lead">
-            MA Smart Global GmbH unterstützt Haushalte, Büros und kleine
-            Unternehmen mit praktischen Services rund um Transport, Reinigung,
-            Montage und mehr.
-          </p>
-          <div className="hero-services">
-            {services.map((s) => (
-              <Link key={s.slug} to={s.to} className="service-tag">
-                {s.title}
-              </Link>
-            ))}
-          </div>
-          <div className="hero-actions">
-            <Link to="/offerte" className="btn btn-gold">
-              Offerte anfragen
-            </Link>
-            <a href="#leistungen" className="btn btn-ghost">
-              Leistungen ansehen
-            </a>
-          </div>
-        </div>
-      </header>
+<header className="hero" id="home">
+  <div className="container hero-content">
+    <span className="eyebrow">
+      Zuverlässige Services in Zürich und der ganzen Schweiz
+    </span>
+    <h1 className="hero-title">
+      Professionelle Dienstleistungen aus einer Hand
+    </h1>
+    <p className="hero-lead">
+      Umzug, Reinigung, Montage, Transport und Entsorgung – zuverlässig,
+      flexibel und in der ganzen Schweiz für Sie im Einsatz.
+    </p>
+
+    <ul className="hero-benefits">
+      <li><i className="fas fa-check" /> Abnahmegarantie</li>
+      <li><i className="fas fa-check" /> Fixpreise</li>
+      <li><i className="fas fa-check" /> Kurzfristige Termine</li>
+      <li><i className="fas fa-check" /> Versicherungsschutz</li>
+      <li><i className="fas fa-check" /> Kostenlose Offerte</li>
+    </ul>
+
+    <div className="hero-actions">
+      <Link to="/offerte" className="btn btn-gold">
+        <i className="fas fa-paper-plane" /> Kostenlose Offerte anfordern
+      </Link>
+      <a href="#leistungen" className="btn btn-ghost">
+        Leistungen ansehen
+      </a>
+    </div>
+  </div>
+</header>
 
       {/* PERSÖNLICH GEPLANT */}
       <section className="section">
@@ -73,27 +81,30 @@ export default function Home() {
       </section>
 
       {/* ALLE LEISTUNGEN */}
-      <section className="section" id="leistungen">
-        <div className="container">
-          <span className="eyebrow">Alle Leistungen</span>
-          <h2 className="section-title">Ein Ansprechpartner für vieles.</h2>
-          <p className="section-lead">
-            Wählen Sie einen Bereich aus. Die genaue Leistung wird vorab
-            gemeinsam definiert.
-          </p>
+<section className="section" id="leistungen">
+  <div className="container">
+    <span className="eyebrow">Unsere Leistungen</span>
+    <h2 className="section-title">
+      Umzug, Reinigung, Montage, Transport &amp; Entsorgung
+    </h2>
+    <p className="section-lead">
+      MA Smart Global GmbH bietet professionelle Umzüge, Endreinigungen
+      mit Abnahmegarantie, Transporte, Montagen und Hauswartung in Zürich
+      und Umgebung.
+    </p>
 
-          <div className="services-grid">
-            {services.map((s) => (
-              <Link key={s.slug} to={s.to} className="service-card">
-                <i className={`fas ${s.icon}`} />
-                <h3>{s.title}</h3>
-                <p>{s.short}</p>
-                <span className="badge">Details</span>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+    <div className="services-grid">
+      {services.map((s) => (
+        <Link key={s.slug} to={s.to} className="service-card">
+          <i className={`fas ${s.icon}`} />
+          <h3>{s.title}</h3>
+          <p>{s.short}</p>
+          <span className="badge">Details</span>
+        </Link>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* SO FUNKTIONIERT ES */}
       <section className="section section-alt">
@@ -139,12 +150,13 @@ export default function Home() {
       </section>
 
       {/* FAQ */}
-      <section className="section section-alt">
+         <section className="section section-alt" id="faq">
         <div className="container">
           <span className="eyebrow">FAQ</span>
           <h2 className="section-title">Die wichtigsten Antworten.</h2>
           <p className="section-lead">
-            Noch etwas unklar? Schreiben oder rufen Sie uns an.
+            Noch etwas unklar? Schreiben oder rufen Sie uns an – wir helfen
+            gerne weiter.
           </p>
 
           <div className="faq-list">
@@ -155,8 +167,26 @@ export default function Home() {
               </details>
             ))}
           </div>
+
+          <div className="faq-cta">
+            <p>Ihre Frage ist nicht dabei?</p>
+            <a
+              href="https://wa.me/41779074062?text=Hallo%20MA%20Smart%20Global%2C%20ich%20habe%20eine%20Frage"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-whatsapp"
+            >
+              <i className="fab fa-whatsapp" /> Frage per WhatsApp stellen
+            </a>
+          </div>
         </div>
       </section>
+{/* REVIEWS SECTION */}
+      <ReviewsSection />
+
+      {/* GALLERY SECTION */}
+
+      <GallerySection />
 
       {/* FINAL CTA */}
       <section className="section">
@@ -171,6 +201,10 @@ export default function Home() {
           </Link>
         </div>
       </section>
+            <CtaBlock
+        title="Bereit für den nächsten Schritt?"
+        subtitle="Ihre Anfrage ist nur ein paar Angaben entfernt. Wir melden uns mit einer Offerte."
+      />
     </>
   );
 }
