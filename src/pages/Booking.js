@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import offers, { getOfferById } from "../data/offers";
+import CtaBlock from "../components/CtaBlock";
 
 const API_URL = process.env.REACT_APP_API_URL || "";
 

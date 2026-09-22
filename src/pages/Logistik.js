@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import CtaBlock from "../components/CtaBlock";
 export default function Logistik() {
   return (
+    <>
     <section className="section">
       <div className="container">
         <span className="eyebrow">Logistik</span>
@@ -24,5 +25,10 @@ export default function Logistik() {
         </Link>
       </div>
     </section>
+       <CtaBlock
+      title="Transport oder Entsorgung nötig?"
+      subtitle="Senden Sie uns Ihre Anfrage – wir garantieren die Abnahme."
+    />
+  </>
   );
 }

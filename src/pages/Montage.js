@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import CtaBlock from "../components/CtaBlock";
 export default function Montage() {
   return (
+    <>
     <section className="section">
       <div className="container">
         <span className="eyebrow">Montage</span>
@@ -24,5 +25,10 @@ export default function Montage() {
         </Link>
       </div>
     </section>
+       <CtaBlock
+      title="Montage geplant?"
+      subtitle="Senden Sie uns Ihre Anfrage – wir garantieren die Abnahme."
+    />
+  </>
   );
 }

@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import CtaBlock from "../components/CtaBlock";
 export default function Reinigung() {
   return (
+    <>
     <section className="section">
       <div className="container">
         <span className="eyebrow">Reinigung</span>
@@ -24,5 +25,10 @@ export default function Reinigung() {
         </Link>
       </div>
     </section>
+       <CtaBlock
+      title="Reinigung mit Abnahmegarantie?"
+      subtitle="Senden Sie uns Ihre Anfrage – wir garantieren die Abnahme."
+    />
+  </>
   );
 }

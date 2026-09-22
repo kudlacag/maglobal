@@ -1,9 +1,19 @@
-import React from "react";
+import { useEffect, React } from "react";
 import { Link, useLocation } from "react-router-dom";
 
+
+
 export default function Success() {
+
   const { state } = useLocation();
   const ref = state?.ref;
+ // Fire Google Ads conversion when the customer reaches this page
+  useEffect(() => {
+    if (typeof window.gtag !== "function") return;
+    window.gtag("event", "conversion", {
+      send_to: "AW-18455787902/_nUbCNTZpfocEP7ys-BE",
+    });
+  }, []);
 
   return (
     <section className="section">

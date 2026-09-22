@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import offers from "../data/offers";
-
+import CtaBlock from "../components/CtaBlock";
 export default function Umzug() {
   return (
+    <>
     <section className="section">
       <div className="container">
         <span className="eyebrow">Umzug</span>
@@ -38,6 +39,12 @@ export default function Umzug() {
           ))}
         </div>
       </div>
+  
     </section>
+      <CtaBlock
+       title="Nicht sicher, welche Grösse passt?"
+      subtitle="Kontaktieren Sie uns – wir beraten Sie gerne persönlich und unverbindlich."
+    />
+    </>
   );
 }
