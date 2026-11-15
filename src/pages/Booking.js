@@ -7,13 +7,13 @@ const API_URL = process.env.REACT_APP_API_URL || "";
 
 
 export default function Booking() {
-  const { offerId } = useParams();
+  const { offerId } = useParams(); 
   const navigate = useNavigate();
 
   const offer = useMemo(() => getOfferById(offerId), [offerId]);
 
 const [form, setForm] = useState({
-  name: "",
+  name: "", 
   phone: "",
   email: "",
 
@@ -51,7 +51,7 @@ const [form, setForm] = useState({
      }, []);
   if (!offer) {
     return (
-      <section className="section">
+      <section className="section"> 
         <div className="container">
           <span className="eyebrow">Umzug</span>
           <h1 className="section-title">Offerte nicht gefunden.</h1>
@@ -100,7 +100,7 @@ const onSubmit = async (e) => {
 
     // Abort after 90s — Render Free cold start can take ~50s
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 90_000);
+    const timeoutId = setTimeout(() => controller.abort(), 15_000);
 
     let res;
     try {
