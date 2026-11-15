@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>MA SMART GLOBAL</title>
+  <script>
+    // SPA fallback for GitHub Pages
+    // Stores the path, redirects to index.html, then restores the path
+    (function () {
+      var segmentCount = 0;
+      var location = window.location;
+      var repo = "/"; // root domain, so "/"
+      var l = location.pathname.split("/").slice(1 + segmentCount);
+      location.replace(
+        location.protocol + "//" + location.host + repo +
+        "?/" + l.join("/") +
+        (location.search ? "&" + location.search.slice(1) : "") +
+        location.hash
+      );
+    })();
+  </script>
+</head>
+<body></body>
+</html>

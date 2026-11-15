@@ -1,0 +1,19 @@
+{
+  "short_name": "MA Smart Global",
+  "name": "MA Smart Global GmbH",
+  "description": "Professionelle Umzüge, Endreinigungen mit Abnahmegarantie, Transporte und Entsorgungen in Zürich und der ganzen Schweiz.",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#0b1a2e",
+  "background_color": "#0b1a2e",
+  "lang": "de"
+}
