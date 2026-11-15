@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const API_URL = process.env.REACT_APP_API_URL || "";
+const API_URL = process.env.NODE_ENV === "production" 
+  ? "https://YOUR-REAL-RENDER-URL.onrender.com" 
+  : "http://localhost:10000";
 const SERVICES = ["Umzug", "Reinigung", "Montage", "Logistik", "Anderes"];
 
 export default function Offerte() {
