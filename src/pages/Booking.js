@@ -47,10 +47,7 @@ const [form, setForm] = useState({
 
   const [photos, setPhotos] = useState([]);
   const [status, setStatus] = useState({ state: "idle", message: "" });
- // Warm up backend on page open
- useEffect(() => {
-   if (API_URL) fetch(`${API_URL}/health`).catch(() => {});
-     }, []);
+
   if (!offer) {
     return (
       <section className="section"> 
