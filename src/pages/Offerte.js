@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const API_URL = process.env.NODE_ENV === "production" 
-  ? "https://ma-smart-backend.onrender.com/" 
+  ? "https://ma-smart-backend.onrender.com" 
   : "http://localhost:10000";
 const SERVICES = ["Umzug", "Reinigung", "Montage", "Logistik", "Anderes"];
 

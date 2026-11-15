@@ -3,7 +3,7 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import offers, { getOfferById } from "../data/offers";
 import CtaBlock from "../components/CtaBlock";
 
-const API_URL = process.env.REACT_APP_API_URL || "https://ma-smart-backend.onrender.com/";
+const API_URL = process.env.REACT_APP_API_URL || "https://ma-smart-backend.onrender.com";
 
 
 export default function Booking() {
